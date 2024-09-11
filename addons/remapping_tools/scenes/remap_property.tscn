@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu4n23jcv5s7d"]
+
+[ext_resource type="Script" path="res://addons/remapping_tools/scripts/remap_property.gd" id="1_gmjbp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrbk6"]
+bg_color = Color(1, 1, 1, 0.0588235)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b0q8"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkds3"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="RemapProperty" type="PanelContainer"]
+offset_top = 27.0
+offset_right = 101.0
+offset_bottom = 27.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrbk6")
+script = ExtResource("1_gmjbp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4b0q8")
+
+[node name="FoldButton" type="Button" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+
+[node name="RemapProperty" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/RemapProperty"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+
+[node name="FoldIcon" type="TextureRect" parent="VBoxContainer/PanelContainer/RemapProperty/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="WarningIcon" type="TextureRect" parent="VBoxContainer/PanelContainer/RemapProperty"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Action not found on project settings. (Consider re-adding it)"
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ActionName" type="Label" parent="VBoxContainer/PanelContainer/RemapProperty"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Unknown"
+
+[node name="AddButton" type="Button" parent="VBoxContainer/PanelContainer/RemapProperty"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Add Input Event"
+focus_mode = 0
+theme_override_constants/h_separation = 0
+flat = true
+
+[node name="DeleteButton" type="Button" parent="VBoxContainer/PanelContainer/RemapProperty"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Delete Action"
+focus_mode = 0
+theme_override_constants/h_separation = 0
+flat = true
+
+[node name="EventsPanel" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkds3")
+
+[node name="Events" type="VBoxContainer" parent="VBoxContainer/EventsPanel"]
+unique_name_in_owner = true
+layout_mode = 2

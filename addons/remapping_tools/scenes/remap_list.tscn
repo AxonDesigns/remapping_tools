@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgw2q8rp2cmr"]
+
+[ext_resource type="Script" path="res://addons/remapping_tools/scripts/remap_list.gd" id="1_bev6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gk233"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_77414"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rncmh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mubmc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fysb"]
+bg_color = Color(0, 0, 0, 0.0980392)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="RemapList" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_bev6r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/fill = SubResource("StyleBoxEmpty_gk233")
+theme_override_styles/background = SubResource("StyleBoxEmpty_77414")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rncmh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mubmc")
+bbcode_enabled = true
+text = "[b]Remaps[/b]"
+fit_content = true
+scroll_active = false
+
+[node name="RefreshButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Refresh input actions list"
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fysb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Properties" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="InputOptionButton" type="OptionButton" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Add selected input action"
+icon_alignment = 1

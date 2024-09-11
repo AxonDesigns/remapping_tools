@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="InputRemap" load_steps=5 format=3 uid="uid://bi5os83oppo3m"]
+
+[ext_resource type="Script" path="res://addons/remapping_tools/scripts/input_remap.gd" id="1_cir2t"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_osc3c"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_ox5lr"]
+device = -1
+physical_keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_pskbd"]
+
+[resource]
+script = ExtResource("1_cir2t")
+remaps = {
+"fhjfgh": Array[InputEvent]([]),
+"move_backward": Array[InputEvent]([SubResource("InputEventKey_ox5lr")]),
+"move_forward": Array[InputEvent]([SubResource("InputEventKey_osc3c")]),
+"move_left": Array[InputEvent]([SubResource("InputEventKey_pskbd")])
+}
