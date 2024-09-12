@@ -63,7 +63,7 @@ visible = false
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "Action not found on project settings. (Consider re-adding it)"
+tooltip_text = "Action not found in project settings. (Consider adding it)"
 expand_mode = 1
 stretch_mode = 4
 

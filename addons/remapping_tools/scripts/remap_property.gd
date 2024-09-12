@@ -29,6 +29,7 @@ const FOLDED_ICON_NAME: StringName = &"CodeFoldedRightArrow"
 const UNFOLDED_ICON_NAME: StringName = &"CodeFoldDownArrow"
 const EVENT_TILE_PATH: String = "res://addons/remapping_tools/scenes/remap_event_tile.tscn"
 
+signal event_requested_listening(event_index: int)
 signal event_requested_delete(event: InputEvent)
 signal fold_changed(value: bool)
 
@@ -42,7 +43,7 @@ func init(editor_control: Control) -> void:
   delete_button.icon = editor_control.get_theme_icon(&"Remove", &"EditorIcons")
   add_button.icon = editor_control.get_theme_icon(&"Add", &"EditorIcons")
   warning_icon.texture = editor_control.get_theme_icon(&"NodeWarning", &"EditorIcons")
-  fold_icon.modulate = Color.TRANSPARENT if input_events.is_empty() else Color.WHITE
+  fold_icon.visible = not input_events.is_empty()
   add_button.pressed.connect(_on_add_button_pressed)
   fold_button.pressed.connect(_on_fold_button_pressed)
 
@@ -55,6 +56,10 @@ func init(editor_control: Control) -> void:
     event_tile.init(editor_control)
     event_tile.event_button.text = event.as_text()
     event_tile.delete_button.pressed.connect(_on_event_tile_delete.bind(event))
+    event_tile.event_button.pressed.connect(func():
+      event_tile.event_button.text = "Listening..."
+      _on_event_tile_listening(input_events.find(event))
+    )
     events.add_child(event_tile)
 
 
@@ -74,3 +79,6 @@ func _set_fold(value: bool) -> void:
   fold_icon.texture = editor_control.get_theme_icon(icon_name, &"EditorIcons")
   events_panel.visible = not folded
   fold_changed.emit(folded)
+
+func _on_event_tile_listening(event_index: int) -> void:
+  event_requested_listening.emit(event_index)

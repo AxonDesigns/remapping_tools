@@ -35,7 +35,7 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_77414")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rncmh")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mubmc")
 bbcode_enabled = true
-text = "[b]Remaps[/b]"
+text = " [b]Actions[/b]"
 fit_content = true
 scroll_active = false
 
